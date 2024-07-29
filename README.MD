@@ -15,20 +15,10 @@ The **S3 Tarball Manager** is a Python library designed to automate the process 
 
 ## Installation
 
-### Using Docker
-
-Docker provides a consistent environment for running your application. To use Docker, follow these steps:
-
-1. **Build the Docker Image**:
+You can install the s3-tarball-manager package via pip:
 
     ```sh
-    docker build -t s3_tarball_manager .
-    ```
-
-2. **Run the Docker Container**:
-
-    ```sh
-    docker run --rm s3_tarball_manager
+    pip install s3-tarball-manager
     ```
 
 ### Configuring AWS Account
@@ -51,23 +41,33 @@ To use the library, create a Python script that utilizes the `S3TarballManager` 
 
 ### Example Usage
 
+### Using the Package in a Python Script
+Here’s an example of how to use the s3-tarball-manager in a Python script:
+
+
 ```python
-from s3_tarball_manager import S3TarballManager
+from s3_tarball_manager.manager import S3TarballManager
 
-# Example usage
-if __name__ == "__main__":
-    s3_uri = 's3://absuite-gan-model/absuite-discovery-11-p-2ozaf1mrxyil/code/3a1591b597c6a6e14de0e574d827912b/sourcedir.tar.gz'
-    script_name = 'preprocess.py'
-    modifications = {
-        '/opt/ml/processing/data/': '/opt/ml/processing/data/tensorflow'
-    }
-    line_insertions = {
-        188: "# this section explains a feature engineering",
-        122: "new content for line 122"
-    }
-    line_deletions = [
-        200
-    ]
+# Define the S3 URI, script name, modifications, line insertions, and deletions
+s3_uri = 's3://your-bucket/your-tarball'
+script_name = 'preprocess.py'
+modifications = {
+    'original_text': 'new_text'
+}
+line_insertions = {
+    188: '# this section explains a feature engineering'
+}
+line_deletions = [200]
 
-    manager = S3TarballManager(s3_uri)
-    manager.process_tarball(script_name, modifications, line_insertions, line_deletions)
+# Create an instance of S3TarballManager
+manager = S3TarballManager(s3_uri)
+
+# Process the tarball
+manager.process_tarball(script_name, modifications, line_insertions, line_deletions)
+
+
+### Using the Package from the Command Line
+You can also use the package directly from the command line:
+
+```sh
+pip install s3-tarball-manager

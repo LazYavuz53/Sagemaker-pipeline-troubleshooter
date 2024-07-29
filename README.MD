@@ -79,6 +79,7 @@ manager.process_tarball(script_name, modifications, line_insertions, line_deleti
 
 ```sh
 python -m s3_tarball_manager.manager --s3-uri s3://my-bucket/my-tarball.tar.gz --script preprocess.py --modifications "original_text=new_text" --insertions "188=# this section explains a feature engineering" --deletions 200
+```
 
 
 ### How to troubleshoot a Sagemaker pipeline

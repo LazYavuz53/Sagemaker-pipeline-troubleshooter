@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **S3 Tarball Manager** is a Python library designed to automate the process of downloading, modifying, and uploading tarballs stored in Amazon S3. This tool is particularly useful for scenarios where you need to programmatically update files within a compressed archive stored on S3 and then upload the updated archive back to S3.
+The **S3 Tarball Manager** is a Python library designed to automate the process of downloading, modifying, and uploading tarballs stored in Amazon S3. Efficiently troubleshooting pipeline runs in AWS SageMaker is crucial for maintaining a smooth machine learning workflow. Often, pipeline runs may fail at later stages after successfully completing the initial steps. Resubmitting the job from the beginning in such cases can be time-consuming and inefficient. To address this, I developed **S3 Tarball Manager** that allows you to modify the code and resume the pipeline from the point of failure, eliminating the need to restart the entire pipeline run.
 
 ## Features
 

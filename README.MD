@@ -64,10 +64,12 @@ manager = S3TarballManager(s3_uri)
 
 # Process the tarball
 manager.process_tarball(script_name, modifications, line_insertions, line_deletions)
-
+```
 
 ### Using the Package from the Command Line
 You can also use the package directly from the command line:
 
 ```sh
 pip install s3-tarball-manager
+
+

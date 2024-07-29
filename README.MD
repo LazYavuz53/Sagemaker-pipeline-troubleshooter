@@ -66,10 +66,19 @@ manager = S3TarballManager(s3_uri)
 manager.process_tarball(script_name, modifications, line_insertions, line_deletions)
 ```
 
-### Using the Package from the Command Line
-You can also use the package directly from the command line:
+### Command Line Arguments
+--s3-uri: The S3 URI of the tarball.
+--script: The name of the script to modify inside the tarball.
+--modifications: Text modifications in the format original_text=new_text.
+--insertions: Line insertions in the format line_number=new_line.
+--deletions: Line numbers to delete.
+
+
+### Example Command
+
 
 ```sh
-pip install s3-tarball-manager
+python -m s3_tarball_manager.manager --s3-uri s3://my-bucket/my-tarball.tar.gz --script preprocess.py --modifications "original_text=new_text" --insertions "188=# this section explains a feature engineering" --deletions 200
+
 
 

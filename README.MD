@@ -84,4 +84,36 @@ python -m s3_tarball_manager.manager --s3-uri s3://my-bucket/my-tarball.tar.gz -
 
 ### How to troubleshoot a Sagemaker pipeline
 
-Please add more info
+If your SageMaker pipeline fails after submitting the job from either your SageMaker environment or VS Code, follow these steps to troubleshoot:
+
+## 1. Navigate to the Failed Job
+- Go to your AWS account, then navigate to **Amazon SageMaker > Processing Jobs**.
+- Locate the failed job. In this example, we're assuming the pipeline failed at the "Evaluate" step. Note that both "Preprocessing" and "Evaluate" steps can be found under Processing Jobs.
+
+![Processing and Training Tabs](Figs./processing_tab.png)
+
+![Failed Job Example](Figs./failed_job.png)
+
+## 2. Retrieve the S3 URI
+- Inside the failed job, find the S3 URI with the extension `.sourcedir.tar.gz`.
+- Copy this link.
+
+![Locate .sourcedir.tar.gz](Figs/S3_URI.png)
+
+## 3. Update the Job Configuration
+- Paste the copied link into the `--s3-uri` parameter and make any necessary changes to your job configuration.
+
+## 4. Access the Pipeline in SageMaker Studio
+- Go to **Amazon SageMaker Studio > Pipelines**.
+
+![SageMaker Studio Home](Figs/pipeline_tab.png)
+
+![Pipelines List](Figs/pipeline_list.png)
+
+## 5. Retry the Failed Pipeline
+- Find the pipeline that failed.
+- After making the required changes with S3TarballManager, click on "Retry" to resubmit the pipeline.
+
+![Retry Failed Pipeline](Figs/pipeline_workflow_retry.png)
+
+This will restart the pipeline where it left off.
